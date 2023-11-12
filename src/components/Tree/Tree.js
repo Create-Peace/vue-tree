@@ -172,10 +172,10 @@ export default {
     filter (keyWord) {
       this.hasSearchResult = false
       const walk = (node = this.root) => {
-        const { children } = node
+        const { parent, children } = node
         children && children.forEach(child => {
           if (!keyWord) {
-            Object.assign(child.data, { visible: true })
+            Object.assign(child.data, { visible: !parent })
             walk(child)
             return
           }
